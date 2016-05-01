@@ -5,11 +5,5 @@
       "ContainerPort": "80"
     }
   ],
-  "Volumes": [
-    {
-      "HostDirectory": "/var/app",
-      "ContainerDirectory": "/app"
-    }
-  ],
   "Logging": "/var/log/app"
 }
