@@ -5,4 +5,4 @@ from django.http import HttpResponse, JsonResponse
 
 
 def main(request):
-  return JsonResponse({'foo': 'aaa'})
+  return JsonResponse({'foo': 'bar'})
