@@ -1,0 +1,10 @@
+app:
+  build: .
+  #working_dir: /app
+  #command: python manage.py runserver 0.0.0.0:80
+  #command: service apache2 start
+  #command: service apache2 start
+  volumes:
+    - .:/app
+  ports:
+    - "80:80"
