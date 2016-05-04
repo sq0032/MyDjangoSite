@@ -9,14 +9,25 @@ client = Client()
 
 # Create your tests here.
 
-### Integration Test ###
+def add(x, y):
+    return x+y
+
+
+class SampleTests(TestCase):
+    def test_if_1_equal_1(self):
+        self.assertEqual(1, 1)
+        
+    def test_if_add_works(self):
+        self.assertEqual(add(3,5), 8)
+
+## Integration Test ###
 class TodoListAPITests(TestCase):
     def test_if_created_todolist_successfully(self):
         client.post(reverse('create_todolist'), {'name':'test'})
         todolists = TodoList.objects.all()
         self.assertEqual(todolists.count(),1)
         self.assertEqual(todolists[0].name,'test')
-        
+         
 class TodoItemAPITests(TestCase):
     def test_if_created_todoitem_successfully(self):
         todolist = TodoList.objects.create(name='test list')
@@ -24,6 +35,7 @@ class TodoItemAPITests(TestCase):
         todoitems = TodoItem.objects.all()
         self.assertEqual(todoitems.count(),1)
         self.assertEqual(todoitems[0].name,'test item')
+ 
 
 
 ### Unit Test ###
@@ -34,6 +46,7 @@ class TodoListMethodTests(TestCase):
         self.assertEqual(todolists.count(),1)
         self.assertEqual(todolists[0].name,'test')
         
+         
 class TodoItemMethodTests(TestCase):
     def test_if_created_todoitem_successfully(self):
         todolist = TodoList.objects.create(name="test list")

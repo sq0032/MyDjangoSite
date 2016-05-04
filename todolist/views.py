@@ -12,11 +12,11 @@ def todolist(request):
 
 
 def todoitem(request, list_id):
-    print(list_id)
+#     print(list_id)
     if request.method == 'POST':
         name = request.POST['name']
         todolist = TodoList.objects.get(id=list_id)
         todoitem = TodoItem.objects.create(name=name, todolist=todolist)
         
         
-    return JsonResponse({'name':'good'})
+    return JsonResponse({'name':'success'})
