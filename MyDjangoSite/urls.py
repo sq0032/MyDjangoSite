@@ -21,5 +21,5 @@ from MyDjangoSite.views import *
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^todolist/', include('todolist.urls')),
-    url(r'^$', main),
+    url(r'^$', main, name='test'),
 ]

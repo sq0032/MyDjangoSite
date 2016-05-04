@@ -14,3 +14,7 @@ rsa==3.3
 s3transfer==0.0.1
 six==1.10.0
 MySQL-python==1.2.5
+watchdog==0.8.8
+pytest==2.9.1
+pytest-django==2.9.1
+pytest-watch==4.1.0
