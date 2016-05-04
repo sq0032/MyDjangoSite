@@ -12,4 +12,4 @@ def main(request):
     else:
         env = 'LOCAL'
 
-    return JsonResponse({'env':env})
+    return JsonResponse({'env':env, 'test':'AAA'})
