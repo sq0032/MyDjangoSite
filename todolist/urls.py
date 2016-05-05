@@ -9,6 +9,6 @@ from django.conf.urls import url
 from todolist.views import todolist, todoitem
 
 urlpatterns = [
-    url(r'^$', todolist, name='create_todolist'),
+    url(r'^$', todolist, name='todolist'),
     url(r'^(?P<list_id>\d+)/item$', todoitem, name='add_todoitem'),
 ]

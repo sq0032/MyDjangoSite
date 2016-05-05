@@ -7,6 +7,7 @@ setup_test_environment()
 from django.test import Client
 client = Client()
 
+import json
 # Create your tests here.
 
 def add(x, y):
@@ -23,10 +24,26 @@ class SampleTests(TestCase):
 ## Integration Test ###
 class TodoListAPITests(TestCase):
     def test_if_created_todolist_successfully(self):
-        client.post(reverse('create_todolist'), {'name':'test'})
+        client.post(reverse('todolist'), {'name':'test'})
         todolists = TodoList.objects.all()
         self.assertEqual(todolists.count(),1)
         self.assertEqual(todolists[0].name,'test')
+        
+    def test_if_fetch_todolist_successfully(self):
+        #initial json
+        d = [
+             {'id':1, 'name':'test1'},
+             {'id':2, 'name':'test2'},
+             {'id':3, 'name':'test3'},
+        ]
+        
+        #Insert initial todolists
+        TodoList.objects.create(id=1, name="test1")
+        TodoList.objects.create(id=2, name="test2")
+        TodoList.objects.create(id=3, name="test3")
+        
+        response = client.get(reverse('todolist'))
+        self.assertEqual(response.content, json.dumps(d))
          
 class TodoItemAPITests(TestCase):
     def test_if_created_todoitem_successfully(self):
@@ -35,6 +52,8 @@ class TodoItemAPITests(TestCase):
         todoitems = TodoItem.objects.all()
         self.assertEqual(todoitems.count(),1)
         self.assertEqual(todoitems[0].name,'test item')
+        
+
  
 
 
