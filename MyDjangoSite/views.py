@@ -6,10 +6,10 @@ import json
 import os
 
 def main(request):
-    
-    if 'RDS_HOSTNAME' in os.environ:
-        env = 'AWS EB'
-    else:
-        env = 'LOCAL'
-
-    return JsonResponse({'env':env, 'test':'AAA'})
+    return render(request, 'index.html', locals())
+#    if 'RDS_HOSTNAME' in os.environ:
+#        env = 'AWS EB'
+#    else:
+#        env = 'LOCAL'
+#
+#    return JsonResponse({'env':env, 'test':'AAA'})

@@ -28,3 +28,15 @@ def todoitem(request, list_id):
         todolist = TodoList.objects.get(id=list_id)
         todoitem = TodoItem.objects.create(name=name, todolist=todolist)
     return JsonResponse({'name':'success'})
+
+
+def AAA(request):
+    #Do something
+    d = request.body
+#     d = request.body.replace("'",'"')
+    data = json.loads(d)
+#     print(request.body)
+#     print(json.loads('{"name":"test"}'))
+    print(data['name'])
+    
+    return HttpResponse('OK')
