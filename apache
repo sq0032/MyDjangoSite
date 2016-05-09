@@ -10,6 +10,7 @@ WSGIPythonPath /app
         # However, you must set it for any further virtual host explicitly.
         #ServerName www.example.com
         Alias /static/admin "/usr/local/lib/python2.7/dist-packages/django/contrib/admin/static/admin"
+        Alias /frontend /app/frontend
         Alias /static /app/static
         <Directory /app/static>
             Require all granted
@@ -23,6 +24,10 @@ WSGIPythonPath /app
             <Files wsgi.py>
                 Require all granted
             </Files>
+        </Directory>
+        
+        <Directory /app/frontend/public>
+            Require all granted
         </Directory>
 
         WSGIScriptAlias / /app/MyDjangoSite/wsgi.py
